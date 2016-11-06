@@ -18,5 +18,8 @@
   ],
   "dependencies": {
     "purescript-monoid": "^2.0.0"
+  },
+  "devDependencies": {
+    "purescript-psci-support": "^2.0.0"
   }
 }
