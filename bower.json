@@ -1,8 +1,8 @@
 {
   "name": "purescript-group",
   "homepage": "https://github.com/morganthomas/purescript-group",
-  "description": "Group algebraic structure",
-  "license": "Apache 2.0",
+  "description": "Group algebraic structure for PureScript",
+  "license": "Apache-2.0",
   "repository": {
     "type": "git",
     "url": "git://github.com/morganthomas/purescript-group.git"
