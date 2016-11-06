@@ -1,0 +1,22 @@
+{
+  "name": "purescript-group",
+  "homepage": "https://github.com/morganthomas/purescript-group",
+  "description": "Group algebraic structure",
+  "license": "Apache 2.0",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/morganthomas/purescript-group.git"
+  },
+  "ignore": [
+    "**/.*",
+    "bower_components",
+    "node_modules",
+    "output",
+    "test",
+    "bower.json",
+    "package.json"
+  ],
+  "dependencies": {
+    "purescript-monoid": "^2.0.0"
+  }
+}
