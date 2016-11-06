@@ -27,7 +27,7 @@ import Data.Monoid.Additive (Additive(..))
 class Monoid g <= Group g where
   ginverse :: g -> g
 
--- | A `CommutativeGroup` is a `Monoid` with a commutative monoid operation.
+-- | A `CommutativeGroup` is a `Group` with a commutative monoid operation.
 -- | Instances must satisfy the following law in addition to the group laws:
 -- |
 -- | ```text
