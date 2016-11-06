@@ -1,11 +1,15 @@
 module Data.Group where
 
 import Data.Monoid (class Monoid)
-import Data.Field (class Field, negate)
+import Data.Ring (class Ring, negate)
 import Data.Monoid.Additive (Additive(..))
 
 class Monoid g <= Group g where
   ginverse :: g -> g
 
-instance fieldsAreAdditiveGroups :: (Field f) => Group (Additive f) where
+class Group g <= CommutativeGroup g
+
+instance ringsAreAdditiveGroups :: (Ring r) => Group (Additive r) where
   ginverse (Additive x) = Additive (negate x)
+
+instance ringsAreCommutativeAdditiveGroups :: (Ring r) => CommutativeGroup (Additive r)
