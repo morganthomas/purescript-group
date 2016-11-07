@@ -15,6 +15,7 @@
 module Data.Group where
 
 import Data.Monoid (class Monoid)
+import Data.Monoid.Dual (Dual(..))
 import Data.Ring (class Ring, negate)
 import Data.Monoid.Additive (Additive(..))
 import Data.Unit (Unit, unit)
@@ -37,6 +38,11 @@ instance unitIsGroup :: Group Unit where
   ginverse _ = unit
 
 instance unitIsCommutativeGroup :: CommutativeGroup Unit
+
+instance dualGroupsAreGroups :: (Group g) => Group (Dual g) where
+  ginverse (Dual x) = Dual (ginverse x)
+
+instance dualCommutativeGroupsAreCommutativeGroups :: (CommutativeGroup g) => CommutativeGroup (Dual g)
 
 instance ringsAreAdditiveGroups :: (Ring r) => Group (Additive r) where
   ginverse (Additive x) = Additive (negate x)
