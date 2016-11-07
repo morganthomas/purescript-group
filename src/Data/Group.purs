@@ -21,18 +21,15 @@ import Data.Monoid.Additive (Additive(..))
 -- | A `Group` is a `Monoid` with inverses. Instances
 -- | must satisfy the following law in addition to the monoid laws:
 -- |
--- | ```text
--- | forall x. ginverse x <> x = mempty = x <> ginverse x
--- | ```
+-- | - Inverse: `forall x. ginverse x <> x = mempty = x <> ginverse x`
 class Monoid g <= Group g where
   ginverse :: g -> g
 
--- | A `CommutativeGroup` is a `Group` with a commutative monoid operation.
--- | Instances must satisfy the following law in addition to the group laws:
+-- | A `CommutativeGroup` is a `Group` with a commutative semigroup operation.
+-- | Also known as an Abelian group. Instances must satisfy the following law
+-- | in addition to the group laws:
 -- |
--- | ```text
--- | forall x, y. x <> y = y <> x
--- | ```
+-- | - Commutativity: `forall x, y. x <> y = y <> x`
 class Group g <= CommutativeGroup g
 
 instance ringsAreAdditiveGroups :: (Ring r) => Group (Additive r) where
