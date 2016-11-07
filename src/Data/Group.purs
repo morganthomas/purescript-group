@@ -17,6 +17,7 @@ module Data.Group where
 import Data.Monoid (class Monoid)
 import Data.Ring (class Ring, negate)
 import Data.Monoid.Additive (Additive(..))
+import Data.Unit (Unit, unit)
 
 -- | A `Group` is a `Monoid` with inverses. Instances
 -- | must satisfy the following law in addition to the monoid laws:
@@ -31,6 +32,11 @@ class Monoid g <= Group g where
 -- |
 -- | - Commutativity: `forall x, y. x <> y = y <> x`
 class Group g <= CommutativeGroup g
+
+instance unitIsGroup :: Group Unit where
+  ginverse _ = unit
+
+instance unitIsCommutativeGroup :: CommutativeGroup Unit
 
 instance ringsAreAdditiveGroups :: (Ring r) => Group (Additive r) where
   ginverse (Additive x) = Additive (negate x)
