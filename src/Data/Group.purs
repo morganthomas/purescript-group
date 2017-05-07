@@ -32,6 +32,8 @@ class Monoid g <= Group g where
 -- | - Commutativity: `forall x, y. x <> y = y <> x`
 class Semigroup g <= CommutativeSemigroup g
 
+instance commutativeSemigroupVoid :: CommutativeSemigroup Void
+
 instance groupUnit :: Group Unit where
   ginverse _ = unit
 
