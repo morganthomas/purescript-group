@@ -15,10 +15,9 @@
 module Data.Group where
 
 import Data.Monoid (class Monoid)
-import Data.Monoid.Dual (Dual(..))
-import Data.Ring (class Ring, negate)
 import Data.Monoid.Additive (Additive(..))
-import Data.Unit (Unit, unit)
+import Data.Monoid.Dual (Dual(..))
+import Prelude
 
 -- | A `Group` is a `Monoid` with inverses. Instances
 -- | must satisfy the following law in addition to the monoid laws:
@@ -27,24 +26,25 @@ import Data.Unit (Unit, unit)
 class Monoid g <= Group g where
   ginverse :: g -> g
 
--- | A `CommutativeGroup` is a `Group` with a commutative semigroup operation.
--- | Also known as an Abelian group. Instances must satisfy the following law
--- | in addition to the group laws:
+-- | A `CommutativeSemigroup` is a `Semigroup` with a commutative operation.
+-- | Instances must satisfy the following law in addition to the group laws:
 -- |
 -- | - Commutativity: `forall x, y. x <> y = y <> x`
-class Group g <= CommutativeGroup g
+class Semigroup g <= CommutativeSemigroup g
 
-instance unitIsGroup :: Group Unit where
+instance groupUnit :: Group Unit where
   ginverse _ = unit
 
-instance unitIsCommutativeGroup :: CommutativeGroup Unit
+instance commutativeSemigroupUnit :: CommutativeSemigroup Unit
 
-instance dualGroupsAreGroups :: (Group g) => Group (Dual g) where
+instance groupDual :: (Group g) => Group (Dual g) where
   ginverse (Dual x) = Dual (ginverse x)
 
-instance dualCommutativeGroupsAreCommutativeGroups :: (CommutativeGroup g) => CommutativeGroup (Dual g)
+instance commutativeSemigroupDual :: (CommutativeSemigroup g) => CommutativeSemigroup (Dual g)
 
-instance ringsAreAdditiveGroups :: (Ring r) => Group (Additive r) where
+instance groupAdditive :: (Ring r) => Group (Additive r) where
   ginverse (Additive x) = Additive (negate x)
 
-instance ringsAreCommutativeAdditiveGroups :: (Ring r) => CommutativeGroup (Additive r)
+instance commutativeSemigroupAdditive :: (Ring r) => CommutativeSemigroup (Additive r)
+
+type Abelian a b = Group a => CommutativeSemigroup a => b
