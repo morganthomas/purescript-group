@@ -1,8 +1,10 @@
 module Data.Group.Action
   ( class LeftAction
-  , lact
   , class RightAction
+  , lact
   , ract
+  , (<+)
+  , (+>)
   ) where
 
 import Data.Group (class Group)
@@ -22,3 +24,6 @@ class Group g <= LeftAction g s where
 -- | - Compatibility: `forall g h s. ract s (g <> h) = ract (ract s g) h`
 class Group g <= RightAction g s where
   ract :: s -> g -> s
+
+infixl 6 lact as <+
+infixl 6 ract as +>
