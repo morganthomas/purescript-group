@@ -17,6 +17,7 @@ module Data.Group where
 import Data.Monoid (class Monoid)
 import Data.Monoid.Additive (Additive(..))
 import Data.Monoid.Dual (Dual(..))
+import Data.Semigroup.Commutative (class Commutative)
 import Prelude
 
 -- | A `Group` is a `Monoid` with inverses. Instances
@@ -26,27 +27,14 @@ import Prelude
 class Monoid g <= Group g where
   ginverse :: g -> g
 
--- | A `CommutativeSemigroup` is a `Semigroup` with a commutative operation.
--- | Instances must satisfy the following law in addition to the group laws:
--- |
--- | - Commutativity: `forall x, y. x <> y = y <> x`
-class Semigroup g <= CommutativeSemigroup g
-
-instance commutativeSemigroupVoid :: CommutativeSemigroup Void
-
 instance groupUnit :: Group Unit where
   ginverse _ = unit
-
-instance commutativeSemigroupUnit :: CommutativeSemigroup Unit
 
 instance groupDual :: (Group g) => Group (Dual g) where
   ginverse (Dual x) = Dual (ginverse x)
 
-instance commutativeSemigroupDual :: (CommutativeSemigroup g) => CommutativeSemigroup (Dual g)
-
 instance groupAdditive :: (Ring r) => Group (Additive r) where
   ginverse (Additive x) = Additive (negate x)
 
-instance commutativeSemigroupAdditive :: (Ring r) => CommutativeSemigroup (Additive r)
-
-type Abelian a b = Group a => CommutativeSemigroup a => b
+-- | An Abelian group is a group with a commutative operation.
+type Abelian a b = Group a => Commutative a => b
