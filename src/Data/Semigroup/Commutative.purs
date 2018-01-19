@@ -20,7 +20,7 @@ import Data.Semigroup.Commutative (class Commutative)
 import Prelude
 
 -- | A `Commutative` is a `Semigroup` with a commutative operation. Instances
--- | must satisfy the following law in addition to the group laws:
+-- | must satisfy the following law in addition to the semigroup laws:
 -- |
 -- | - Commutativity: `forall x, y. x <> y = y <> x`
 class Semigroup g <= Commutative g
