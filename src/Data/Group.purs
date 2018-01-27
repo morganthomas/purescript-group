@@ -17,7 +17,6 @@ module Data.Group where
 import Data.Monoid (class Monoid)
 import Data.Monoid.Additive (Additive(..))
 import Data.Monoid.Dual (Dual(..))
-import Data.Monoid.Multiplicative (Multiplicative(..))
 import Data.Semigroup.Commutative (class Commutative)
 import Prelude
 
@@ -36,9 +35,6 @@ instance groupDual :: (Group g) => Group (Dual g) where
 
 instance groupAdditive :: (Ring r) => Group (Additive r) where
   ginverse (Additive x) = Additive (negate x)
-
-instance groupMultiplicative :: (DivisionRing r) => Group (Multiplicative r) where
-  ginverse (Multiplicative x) = Multiplicative (recip x)
 
 -- | An Abelian group is a group with a commutative operation.
 type Abelian a b = Group a => Commutative a => b
