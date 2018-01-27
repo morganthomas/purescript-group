@@ -16,7 +16,7 @@ module Data.Semigroup.Commutative where
 
 import Data.Monoid.Additive (Additive)
 import Data.Monoid.Dual (Dual)
-import Data.Semigroup.Commutative (class Commutative)
+import Data.Monoid.Multiplicative (Multiplicative)
 import Prelude
 
 -- | A `Commutative` is a `Semigroup` with a commutative operation. Instances
@@ -31,4 +31,8 @@ instance commutativeUnit :: Commutative Unit
 
 instance commutativeDual :: (Commutative g) => Commutative (Dual g)
 
-instance commutativeAdditive :: (Ring r) => Commutative (Additive r)
+-- | Addition commutes for any `Semiring`
+instance commutativeAdditive :: (Semiring r) => Commutative (Additive r)
+
+-- | Multiplication commutes only for a `CommutativeRing`.
+instance commutativeMultiplicative :: (CommutativeRing r) => Commutative (Multiplicative r)
