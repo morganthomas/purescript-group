@@ -31,4 +31,4 @@ instance commutativeUnit :: Commutative Unit
 
 instance commutativeDual :: (Commutative g) => Commutative (Dual g)
 
-instance commutativeAdditive :: (Ring r) => Commutative (Additive r)
+instance commutativeAdditive :: Semiring r => Commutative (Additive r)
