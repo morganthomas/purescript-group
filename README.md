@@ -3,7 +3,12 @@ Group algebraic structure.
 ## Installation
 
 ```
-bower install purescript-group
+$ bower install purescript-group
+
+     -- OR -- 
+
+$ psc-package install
+
 ```
 
 ## Documentation

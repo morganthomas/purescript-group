@@ -17,10 +17,9 @@
     "package.json"
   ],
   "dependencies": {
-    "purescript-monoid": "^3.0.0",
-    "purescript-lists": "^4.12.0"
+    "purescript-lists": "^5.0.0"
   },
   "devDependencies": {
-    "purescript-psci-support": "^3.0.0"
+    "purescript-psci-support": "^4.0.0"
   }
 }

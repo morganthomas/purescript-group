@@ -5,7 +5,6 @@ import Prelude
 import Data.Foldable (foldr)
 import Data.Group (class Group)
 import Data.List (List(..), reverse, (:))
-import Data.Monoid (class Monoid)
 
 -- | A data type indicating the sign of one of the generators of the free group.
 data Signed a = Positive a | Negative a
