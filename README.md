@@ -1,3 +1,7 @@
+# purescript-group
+
+[![Latest release](http://img.shields.io/github/release/morganthomas/purescript-group.svg)](https://github.com/morganthomas/purescript-group/releases)
+
 Group algebraic structure.
 
 ## Installation
