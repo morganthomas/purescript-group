@@ -1,6 +1,6 @@
 # purescript-group
 
-[![Latest release](http://img.shields.io/github/release/morganthomas/purescript-group.svg)](https://github.com/morganthomas/purescript-group/releases)
+[![Latest release](http://img.shields.io/github/release/morganthomas/purescript-group.svg)](https://github.com/morganthomas/purescript-group/releases) [![Build status](https://travis-ci.org/morganthomas/purescript-group.svg?branch=master)](https://travis-ci.org/morganthomas/purescript-group)
 
 Group algebraic structure.
 
@@ -9,7 +9,7 @@ Group algebraic structure.
 ```
 $ bower install purescript-group
 
-     -- OR -- 
+     -- OR --
 
 $ psc-package install
 
