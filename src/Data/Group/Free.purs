@@ -1,4 +1,4 @@
-module Data.Group.Free (FreeGroup(..), free, Signed(..)) where
+module Data.Group.Free (FreeGroup(..), free, Signed(..), foldFree) where
 
 import Prelude
 
