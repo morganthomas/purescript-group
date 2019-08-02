@@ -3,7 +3,7 @@ module Data.Group.Free (FreeGroup(..), free, Signed(..)) where
 import Prelude
 
 import Data.Foldable (foldr)
-import Data.Group (class Group)
+import Data.Group (class Group, ginverse)
 import Data.List (List(..), reverse, (:))
 
 -- | A data type indicating the sign of one of the generators of the free group.
@@ -29,6 +29,13 @@ newtype FreeGroup a = FreeGrp (List (Signed a))
 -- | Lift a value of type `a` to a value of type `FreeGroup a`
 free :: forall a. a -> FreeGroup a
 free x = FreeGrp $ Positive x : Nil
+
+-- | Lift a function from `a` to some group `b` into the unique induced homomorphism from `FreeGroup a` to `b`.
+foldFree :: forall a b. Group b => (a -> b) -> FreeGroup a -> b
+foldFree f (FreeGrp xs) = foldr (\a b -> f' a <> b) mempty xs
+  where
+  f' (Positive x) = f x
+  f' (Negative x) = ginverse (f x)
 
 instance eqFreeGrp :: Eq a => Eq (FreeGroup a) where
   eq (FreeGrp x) (FreeGrp y) = canonical x == canonical y
